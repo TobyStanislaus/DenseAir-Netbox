@@ -17,5 +17,7 @@ class TestStringMethods(unittest.TestCase):
 
 
 
-TestStringMethods('foo')
+unittest.main()
+
+
 
