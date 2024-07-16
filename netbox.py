@@ -3,7 +3,7 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 url="https://netbox-dev.da.int/api/dcim/devices/10/"
-token="ba3ac42a21fc1a55aeede388c446a0929f16fe99"
+token=""
 #desiredKeys=['site','location','rack','position','tenant','device_type','description','airflow','serial','asset_tag','config_template']
 headers = {
     'Content-Type':'application/json',
