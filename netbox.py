@@ -3,7 +3,7 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 url="https://netbox-dev.da.int/api/dcim/devices/10"
-token=""
+token="fe19f62cf80f7fba99230cffcf54307acaf8a90b"
 #desiredKeys=['site','location','rack','position','tenant','device_type','description','airflow','serial','asset_tag','config_template']
 headers = {
     'Content-Type':'application/json',
@@ -44,6 +44,9 @@ def findDictData(url,headers):
 
     return resultDict
 
-resultDict=findDictData(url,headers)
-query=input("Input your query:")
-print(resultDict[query])
+def run(query):
+    resultDict=findDictData(url,headers)
+    return resultDict[query]
+
+#query=input("Input your query: ")
+#print(run(query))
