@@ -26,3 +26,4 @@ headers = {
     }
 
 print(run(args.filter, args.api, headers))
+
