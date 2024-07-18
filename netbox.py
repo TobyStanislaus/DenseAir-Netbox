@@ -53,5 +53,3 @@ def demoFetch(url,headers):
         print(term,':',res[term])
     print('}')
 '''
-
-

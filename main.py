@@ -12,9 +12,8 @@ headers = {
 
 
 parser = argparse.ArgumentParser(description='Filter Netbox results')
-parser.add_argument('--filter', type=str,nargs='+',
-help='Filter the fetched data from the netbox APIs')
+parser.add_argument('--filter', type=str, nargs='+',
+                    help='Filter the fetched data from the netbox APIs')
 
 args = parser.parse_args()
-print(run(args.filter,url,headers))
-
+print(run(args.filter, url, headers))
