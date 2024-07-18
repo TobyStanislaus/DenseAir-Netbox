@@ -7,6 +7,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 parser = argparse.ArgumentParser(description='Filter Netbox results')
 parser.add_argument('--filter', type=str, nargs='+',
+                    default='',
                     help='Filter the fetched data from the netbox APIs')
 
 parser.add_argument('--token', type=str,
@@ -15,7 +16,7 @@ parser.add_argument('--token', type=str,
 
 
 parser.add_argument('--api', type=str,
-                    default="https://netbox-dev.da.int/api/dcim/devices/10/",
+                    default="https://netbox-dev.da.int/api/dcim/devices/",
                     help='Input the api you wish to search from')
 
 args = parser.parse_args()

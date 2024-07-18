@@ -34,7 +34,7 @@ def find_correct_data(dataDict, url, headers, key):
         result = find_dict_data(dataDict[key]['url'], headers)
         return result
 
-    validURL = (isinstance(dataDict[key], str) and dataDict[key][:8] == 'http')
+    validURL = (isinstance(dataDict[key], str) and dataDict[key][:4] == 'http')
     if validURL and dataDict[key] != url:
         result = find_dict_data(dataDict[key], headers)
         return result
