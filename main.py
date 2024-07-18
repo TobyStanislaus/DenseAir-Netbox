@@ -1,5 +1,5 @@
 import argparse
-from netbox import run
+from netbox import collect_all_data
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -25,4 +25,4 @@ headers = {
     'Authorization': 'Token '+args.token
     }
 
-print(run(args.filter, args.api, headers))
+print(collect_all_data(args.filter, args.api, headers))

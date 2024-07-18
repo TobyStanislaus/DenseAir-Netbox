@@ -1,5 +1,5 @@
 import unittest
-from netbox import run
+from netbox import collect_all_data
 import json
 
 
@@ -11,10 +11,12 @@ class TestCircleArea(unittest.TestCase):
             'Content-Type': 'application/json',
             'Authorization': 'Token '+token
             }
-        self.assertEqual(run(["id"], url, headers), json.dumps({'id': 10}))
-        self.assertEqual(run(["display"], url, headers),
+        self.assertEqual(collect_all_data(["id"], url, headers),
+                         json.dumps({'id': 10}))
+        self.assertEqual(collect_all_data(["display"], url, headers),
                          json.dumps({'display': "Kontron-2"}))
-        self.assertEqual(run(["tenant"], url, headers), json.dumps(None))
+        self.assertEqual(collect_all_data(["tenant"], url, headers),
+                         json.dumps({"tenant": None}))
 
 
 if __name__ == "__main__":
