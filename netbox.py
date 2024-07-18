@@ -72,3 +72,9 @@ def collect_all_data(filters, url, headers):
 
     resultJSON = json.dumps(desiredDict)
     return resultJSON
+
+def all_for_one(data):
+
+    if data['results'][0]['name'][:7] == 'Kontron':
+        print(data['results'][0])
+   
