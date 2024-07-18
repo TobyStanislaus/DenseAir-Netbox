@@ -8,7 +8,7 @@ with open('testData.txt', 'r') as file:
 
 
 data = ast.literal_eval(content)
-all_for_one(data)
+all_for_one(data,'Kontron')
 
 
 class TestCircleArea(unittest.TestCase):
