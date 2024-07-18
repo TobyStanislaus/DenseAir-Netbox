@@ -1,4 +1,4 @@
- **Netbox API calls**
+ <h1>Netbox API calls</h1>
 
  This project has its use as it fetches the data of the architecture of the DenseAir network from Netbox, 
  which in itself fetches its data from our servers. As I have made a means to compile all netbox's data, 
