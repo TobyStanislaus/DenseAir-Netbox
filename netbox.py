@@ -73,10 +73,14 @@ def collect_all_data(filters, url, headers):
     resultJSON = json.dumps(desiredDict)
     return resultJSON
 
-def all_for_one(data,filter):
+
+def all_for_one(data, filter):
+    result = []
     for device in data['results']:
-        if device['name'][:len(filter)] == filter:
-            print(device)
-            print('')
- 
-   
+        for key in device:
+            if str(device[key])[:len(filter)] != filter:
+                pass
+            elif device not in result:
+                result.append(device)
+
+    return result
