@@ -2,9 +2,9 @@ import argparse
 from netbox import run
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-#url = "https://netbox-dev.da.int/api/dcim/devices/10/"
-#token = "5ce339f64325ecfda8250344636943e24297cf62"
 
+# url = "https://netbox-dev.da.int/api/dcim/devices/10/"
+# token = "5ce339f64325ecfda8250344636943e24297cf62"
 
 
 parser = argparse.ArgumentParser(description='Filter Netbox results')
