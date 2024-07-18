@@ -2,6 +2,7 @@ import requests
 import json
 import sys
 
+
 def fetch_data(url, headers):
     '''
     Fetches data from netbox apis
@@ -9,7 +10,9 @@ def fetch_data(url, headers):
     payload = {}
     try:
         response = requests.request('GET', url,
-                                    headers=headers, data=payload, verify=False)
+                                    headers=headers,
+                                    data=payload,
+                                    verify=False)
     except:
         sys.exit(2)
 
@@ -63,7 +66,7 @@ def collect_all_data(filters, url, headers):
     '''
     resultDict = find_dict_data(url, headers)
     desiredDict = {}
-    
+
     for filter in filters:
         desiredDict[filter] = resultDict[filter]
 
