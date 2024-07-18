@@ -6,5 +6,5 @@
 
  **Contact**
 
- tstanislaus@denseair.net\n
+ tstanislaus@denseair.net  
  TobyStanislaus on Github
