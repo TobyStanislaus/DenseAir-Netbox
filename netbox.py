@@ -1,14 +1,18 @@
 import requests
 import json
-
+import sys
 
 def fetch_data(url, headers):
     '''
     Fetches data from netbox apis
     '''
     payload = {}
-    response = requests.request('GET', url,
-                                headers=headers, data=payload, verify=False)
+    try:
+        response = requests.request('GET', url,
+                                    headers=headers, data=payload, verify=False)
+    except:
+        sys.exit(2)
+
     return response.json()
 
 
@@ -52,15 +56,16 @@ def find_dict_data(url, headers):
     return resultDict
 
 
-def collect_all_data(args, url, headers):
+def collect_all_data(filters, url, headers):
     '''
     The main function- it sets off the other functions
     to collect and refine the data from netbox apis.
     '''
     resultDict = find_dict_data(url, headers)
     desiredDict = {}
-    for arg in args:
-        desiredDict[arg] = resultDict[arg]
+    
+    for filter in filters:
+        desiredDict[filter] = resultDict[filter]
 
     resultJSON = json.dumps(desiredDict)
     return resultJSON
