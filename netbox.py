@@ -19,6 +19,37 @@ def fetch_data(url, headers):
     return response.json()
 
 
+def iterate_devices(data, filter):
+    '''
+    This will run through the devices in the data[results].
+    Then, it uses check_device to choose if it should be appended to results
+    (its in the filter).
+    '''
+    results = []
+    for device in data['results']:
+        result = check_device(filter, device, results)
+        if result:
+            results.append(result)
+    return json.dumps(results)
+
+
+def check_device(filter, device, results):
+    '''
+    Checks if it contains the filter string in any of
+    the values in the device dictionary.
+    '''
+    for key in device:
+        if str(device[key])[:len(filter)] != filter:
+            pass
+        elif device not in results:
+            return device
+
+
+def present_results(results):
+    for result in results:
+        print(result)
+
+
 def find_correct_data(dataDict, url, headers, key):
     '''
     Recieves a certain key in the dictionary,
@@ -72,15 +103,3 @@ def collect_all_data(filters, url, headers):
 
     resultJSON = json.dumps(desiredDict)
     return resultJSON
-
-
-def all_for_one(data, filter):
-    result = []
-    for device in data['results']:
-        for key in device:
-            if str(device[key])[:len(filter)] != filter:
-                pass
-            elif device not in result:
-                result.append(device)
-
-    return result
