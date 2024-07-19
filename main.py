@@ -16,7 +16,6 @@ parser.add_argument('--token', type=str,
 
 
 parser.add_argument('--api', type=str,
-                    default="https://netbox-dev.da.int/api/dcim/devices/",
                     help='Input the api you wish to search from')
 
 args = parser.parse_args()
