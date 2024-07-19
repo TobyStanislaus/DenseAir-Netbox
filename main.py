@@ -34,6 +34,8 @@ print('Contacting Netbox at', url, file=sys.stderr)
 
 data = fetch_data(url, headers)
 
+if len(data) == 1:
+    sys.exit(1)
 
 print('Received:', len(data), 'objects', file=sys.stderr)
 
