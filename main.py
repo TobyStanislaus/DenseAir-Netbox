@@ -30,8 +30,11 @@ url = build_url(args.api, args.filter)
 
 print('Contacting Netbox at', url, file=sys.stderr)
 
-
-data = fetch_data(url, headers)
+try:
+    data = fetch_data(url, headers)
+except Exception:
+    print('Invalid URL', file=sys.stderr)
+    sys.exit(1)
 
 if len(data) == 1:
     print('Invalid filters', file=sys.stderr)
