@@ -28,7 +28,6 @@ def iterate_devices(data, filter):
     for device in data['results']:
         result = check_device(filter, device, results)
         if result:
-            show_result(result)
             results.append(result)
     return results
 

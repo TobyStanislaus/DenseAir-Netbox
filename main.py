@@ -29,11 +29,11 @@ headers = {
 
 data = fetch_data(args.api, headers)
 
-
-results = iterate_devices(data, args.filter)
+print('received', len(data), file=sys.stderr)
+# results = iterate_devices(data, args.filter)
 
 #    print('-------------------------------------------------', file=sys.stderr)
 
-data = json.dumps(results)
-print(data, file=sys.stdout)
+results = json.dumps(data)
+print(results, file=sys.stdout)
 sys.exit(0)
