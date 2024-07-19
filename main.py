@@ -1,5 +1,5 @@
 import argparse
-from netbox import fetch_data, iterate_devices
+from netbox import fetch_data, build_url
 import urllib3
 import sys
 import json
@@ -7,7 +7,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 parser = argparse.ArgumentParser(description='Filter Netbox results')
-parser.add_argument('--filter', type=str, nargs='+',
+parser.add_argument('--filter', type=str, 
                     default='',
                     help='Filter the fetched data from the netbox APIs')
 
@@ -26,14 +26,15 @@ headers = {
     'Authorization': 'Token '+args.token
     }
 
+url = build_url(args.api, args.filter)
+print('Contacting Netbox at', url, file=sys.stderr)
 
-data = fetch_data(args.api+"?", headers)
+data = fetch_data(url, headers)
 
-print('received', len(data), file=sys.stderr)
+print('Received:', len(data), 'objects', file=sys.stderr)
 
 # results = iterate_devices(data, args.filter)
 
-# print('-------------------------------------------------', file=sys.stderr)
 
 results = json.dumps(data)
 print(results, file=sys.stdout)

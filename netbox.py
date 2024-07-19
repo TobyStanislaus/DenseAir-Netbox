@@ -3,6 +3,10 @@ import json
 import sys
 
 
+def build_url(api, filter_string):
+    return api + '?manufacturer=' + filter_string.lower()
+
+
 def fetch_data(url, headers):
     '''
     Fetches data from netbox apis
