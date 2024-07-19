@@ -1,6 +1,5 @@
 import requests
 import json
-import sys
 
 
 def build_url(api, filter_string):

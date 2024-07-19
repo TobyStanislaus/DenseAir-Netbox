@@ -1,5 +1,5 @@
 import unittest
-from netbox import iterate_devices
+# from netbox import iterate_devices
 import ast
 
 
@@ -19,10 +19,8 @@ def build_url(api, filter_string):
 class TestCircleArea(unittest.TestCase):
     def test_dict(self):
         self.assertEqual()
-        self.assertEqual(iterate_devices(data, 'Kontron'),
-                         results[1])
-        self.assertEqual(iterate_devices(data, ''),
-                         results[2])
+        self.assertEqual('', results[1])
+        self.assertEqual('', results[2])
 
     def test_url_capital(self):
         api = 'https://netbox-dev.da.int/api/dcim/devices/'

@@ -26,9 +26,14 @@ headers = {
     'Authorization': 'Token '+args.token
     }
 
+
 url = build_url(args.api, args.filter)
+
 print('Contacting Netbox at', url, file=sys.stderr)
+
+
 data = fetch_data(url, headers)
+
 
 print('Received:', len(data), 'objects', file=sys.stderr)
 
