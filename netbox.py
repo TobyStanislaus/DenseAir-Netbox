@@ -8,13 +8,11 @@ def fetch_data(url, headers):
     Fetches data from netbox apis
     '''
     payload = {}
-    try:
-        response = requests.request('GET', url,
-                                    headers=headers,
-                                    data=payload,
-                                    verify=False)
-    except:
-        sys.exit(2)
+
+    response = requests.request('GET', url,
+                                headers=headers,
+                                data=payload,
+                                verify=False)
 
     return response.json()
 
@@ -25,12 +23,14 @@ def iterate_devices(data, filter):
     Then, it uses check_device to choose if it should be appended to results
     (its in the filter).
     '''
+
     results = []
     for device in data['results']:
         result = check_device(filter, device, results)
         if result:
+            show_result(result)
             results.append(result)
-    return json.dumps(results)
+    return results
 
 
 def check_device(filter, device, results):
@@ -45,9 +45,12 @@ def check_device(filter, device, results):
             return device
 
 
-def present_results(results):
-    for result in results:
-        print(result)
+def show_result(result):
+    print(' ')
+    print(' ')
+    print(' ')
+    for key in result:
+        print(key, ':', result[key])
 
 
 def find_correct_data(dataDict, url, headers, key):
@@ -62,28 +65,28 @@ def find_correct_data(dataDict, url, headers, key):
     all the data within that url
     '''
     if (isinstance(dataDict[key], dict) and 'url' in dataDict[key]):
-        result = find_dict_data(dataDict[key]['url'], headers)
+        newDict = fetch_data(dataDict[key], headers)
+        result = find_dict_data(newDict, dataDict[key]['url'], headers)
         return result
 
     validURL = (isinstance(dataDict[key], str) and dataDict[key][:4] == 'http')
     if validURL and dataDict[key] != url:
-        result = find_dict_data(dataDict[key], headers)
+        newDict = fetch_data(dataDict[key], headers)
+        result = find_dict_data(newDict, dataDict[key]['url'], headers)
         return result
 
     else:
         return dataDict[key]
 
 
-def find_dict_data(url, headers):
+def find_dict_data(dataDict, url, headers):
     '''
     Collects and iterates through a dictionary
     fetched by the fetch_data function
     '''
-    dataDict = fetch_data(url, headers)
+
     resultDict = {}
     for key in dataDict:
-        if isinstance(dataDict[key], list) and len(dataDict[key]) >= 1:
-            dataDict[key] = dataDict[key][0]
         data = find_correct_data(dataDict, url, headers, key)
         resultDict[key] = data
 

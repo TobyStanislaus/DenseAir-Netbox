@@ -1,7 +1,8 @@
 import argparse
-from netbox import fetch_data, iterate_devices, present_results
+from netbox import fetch_data, iterate_devices
 import urllib3
 import sys
+import json
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
@@ -25,10 +26,14 @@ headers = {
     'Authorization': 'Token '+args.token
     }
 
+
 data = fetch_data(args.api, headers)
-results = iterate_devices(data, args.filter[0])
 
-present_results(results)
 
+results = iterate_devices(data, args.filter)
+
+#    print('-------------------------------------------------', file=sys.stderr)
+
+data = json.dumps(results)
+print(data, file=sys.stdout)
 sys.exit(0)
-
