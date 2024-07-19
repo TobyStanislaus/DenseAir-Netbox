@@ -1,7 +1,7 @@
 import unittest
 from netbox import iterate_devices
 import ast
-import json
+
 
 with open('testData.txt', 'r') as file:
     data = file.read()
@@ -18,21 +18,17 @@ def build_url(api, filter_string):
 
 class TestCircleArea(unittest.TestCase):
     def test_dict(self):
-        self.assertEqual(iterate_devices(data, '9'),
-                         results[0])
+        self.assertEqual()
         self.assertEqual(iterate_devices(data, 'Kontron'),
                          results[1])
         self.assertEqual(iterate_devices(data, ''),
                          results[2])
-        
+
     def test_url_capital(self):
         api = 'https://netbox-dev.da.int/api/dcim/devices/'
         filter_string = 'Kontron'
         url = build_url(api, filter_string)
-
         self.assertEqual(url, 'https://netbox-dev.da.int/api/dcim/devices/?manufacturer=kontron')
-
-
 
 
 if __name__ == "__main__":

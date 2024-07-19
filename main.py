@@ -7,7 +7,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 parser = argparse.ArgumentParser(description='Filter Netbox results')
-parser.add_argument('--filter', type=str, 
+parser.add_argument('--filter', type=str,
                     default='',
                     help='Filter the fetched data from the netbox APIs')
 
@@ -28,13 +28,9 @@ headers = {
 
 url = build_url(args.api, args.filter)
 print('Contacting Netbox at', url, file=sys.stderr)
-
 data = fetch_data(url, headers)
 
 print('Received:', len(data), 'objects', file=sys.stderr)
-
-# results = iterate_devices(data, args.filter)
-
 
 results = json.dumps(data)
 print(results, file=sys.stdout)
