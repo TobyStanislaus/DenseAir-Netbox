@@ -1,4 +1,5 @@
 import requests
+import sys
 
 
 def build_url(api, filter_string):
@@ -15,5 +16,9 @@ def fetch_data(url, headers):
                                 headers=headers,
                                 data=payload,
                                 verify=False)
+
+    if str(response) == '<Response [403]>':
+        print('Access forbidden - invalid API key', file=sys.stderr)
+        sys.exit(1)
 
     return response.json()

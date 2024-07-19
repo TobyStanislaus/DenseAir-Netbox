@@ -35,9 +35,11 @@ print('Contacting Netbox at', url, file=sys.stderr)
 data = fetch_data(url, headers)
 
 if len(data) == 1:
+    print('Invalid filters', file=sys.stderr)
     sys.exit(1)
 
 print('Received:', len(data), 'objects', file=sys.stderr)
 results = json.dumps(data)
 print(results, file=sys.stdout)
+
 sys.exit(0)
