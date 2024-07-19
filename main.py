@@ -8,7 +8,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 parser = argparse.ArgumentParser(description='Filter Netbox results')
 parser.add_argument('--filter', type=str,
-                    default='',
                     help='Filter the fetched data from the netbox APIs')
 
 parser.add_argument('--token', type=str,
