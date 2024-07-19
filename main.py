@@ -38,7 +38,6 @@ if len(data) == 1:
     sys.exit(1)
 
 print('Received:', len(data), 'objects', file=sys.stderr)
-
 results = json.dumps(data)
 print(results, file=sys.stdout)
 sys.exit(0)
