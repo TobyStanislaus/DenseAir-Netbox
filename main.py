@@ -2,7 +2,7 @@ import argparse
 from netbox import *
 import urllib3
 import sys
-
+import json
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
@@ -12,7 +12,7 @@ parser.add_argument('--filter', type=str,
                     help='Filter the fetched data from the netbox APIs')
 
 parser.add_argument('--token', type=str,
-                    help='Input your API token')
+                    help='Input your API token for the relevant API')
 
 
 parser.add_argument('--api', type=str,
@@ -43,7 +43,7 @@ if len(data) == 1:
 print('Received:', len(data), 'objects', file=sys.stdout)
 
 output = open("results.txt", "w")
-
+results = json.dumps(data)
 print(data['results'], file=output)
 
 output.close()
