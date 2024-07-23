@@ -43,8 +43,9 @@ if len(data) == 1:
 print('Received:', len(data), 'objects', file=sys.stdout)
 
 output = open("results.txt", "w")
-results = json.dumps(data)
-print(data['results'], file=output)
+response = data['results']
+results = json.dumps(response, indent=4)
+print(results, file=output)
 
 output.close()
 
