@@ -25,3 +25,6 @@ def fetch_data(url, headers):
         sys.exit(1)
 
     return response.json()
+
+
+# add different manufacturers
