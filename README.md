@@ -9,10 +9,8 @@
 
  **Contact**
 
- tstanislaus@denseair.net  
+ toby@stanislaus.co.uk 
  TobyStanislaus on Github
 
- **Forked Version**
- 
  krishavksingh@gmail.com
  krishavksingh on Github
